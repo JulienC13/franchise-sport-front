@@ -1,17 +1,62 @@
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { me_state } from "../recoil";
 
-const Partner = () => {
+const url = "http://localhost:1234/partners/";
+export default function ManagaPartnersPage() {
+  const [partners, set_partners] = useState();
+  const [me, set_me] = useRecoilState(me_state);
+
+  useEffect(() => {
+    load_partners();
+  }, []);
+
+  if (!partners) {
+    return <p>Loading...</p>;
+  }
 
   return (
-    <div>
+    <main>
       <h1 className="title">Partenaire</h1>
-      <br />
       <div className="container">
-        <h3>Liste de nos partenaires : </h3>
+        {partners.map(({ id, city, active }) => (
+          <li key={id}>
+            <input
+              checked={active}
+              onChange={() => toggle_partner(id, !active)}
+              type="checkbox"
+            />
+            {city}
+          </li>
+        ))}
       </div>
-
-    </div>
+    </main>
   );
-};
 
-export default Partner;
+  async function toggle_partner(id, active) {
+    await axios.put(
+      url + id,
+      {
+        active,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${me.token}`,
+        },
+      }
+    );
+    await load_partners();
+  }
+
+  async function load_partners() {
+    console.log(me);
+
+    const { data } = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${me.token}`,
+      },
+    });
+    set_partners(data);
+  }
+}

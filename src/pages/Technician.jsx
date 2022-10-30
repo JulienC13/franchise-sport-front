@@ -1,5 +1,5 @@
 import React from "react";
-import TodoApp from "../Todolist/TodoApp";
+import TodoApp from "../components/Todolist/TodoApp";
 
 const Technician = () => {
   return (
@@ -8,8 +8,8 @@ const Technician = () => {
       <br />
       <h2 className="title">Fonctionnalités :</h2>
       <br />
-        <TodoApp />
-      </div>
+      <TodoApp />
+    </div>
   );
 };
 
