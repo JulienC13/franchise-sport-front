@@ -1,20 +1,27 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import Technician from "./Technician";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
     <main>
-      <div style={{ display: "grid", gap: 8, padding: 32 }}>
-        <button onClick={() => loginAs("STAFF")}>
-          Me connecter en tant que Tech
-        </button>
-        <button onClick={() => loginAs("PARTNER")}>
-          Me connecter en tant que Partenaire
-        </button>
-        <button onClick={() => loginAs("STRUCTURE")}>
-          Me connecter en tant que Structure
-        </button>
+      <div style={{ display: "grid", gap: 8, padding: 32, textAlign:"center" }}>
+        <Link to="/technicien">
+          <button className="btn btn-width" onClick={() => loginAs("STAFF")}>
+            Me connecter en tant que Tech
+          </button>
+        </Link>
+        <Link to="/partenaire/">
+          <button className="btn btn-width" onClick={() => loginAs("PARTNER")}>
+            Me connecter en tant que Partenaire
+          </button>
+        </Link>
+        <Link to="/structure/">
+          <button className="btn btn-width" onClick={() => loginAs("STRUCTURE")}>
+            Me connecter en tant que Structure
+          </button>
+        </Link>
       </div>
     </main>
   );

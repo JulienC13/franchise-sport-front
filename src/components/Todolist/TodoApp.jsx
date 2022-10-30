@@ -40,10 +40,25 @@ const TodoApp = () => {
 
   return (
     <>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoNameRef} type="text" />
-      <button onClick={handleAddTodo}>Ajouter une fonctionnalité</button>
-      <button onClick={handleClearTodos}>Supprimer</button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <input ref={todoNameRef} type="text" />
+        <button className="btn margin-left" onClick={handleAddTodo}>
+          Ajouter une fonctionnalité
+        </button>
+        <button className="btn margin-left" onClick={handleClearTodos}>
+          Supprimer
+        </button>
+      </div>
+      <br />
+      <div className="container">
+        <TodoList todos={todos} toggleTodo={toggleTodo} />
+      </div>
     </>
   );
 };

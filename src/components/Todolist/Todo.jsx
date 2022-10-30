@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function Todo({ todo, toggleTodo }) {
-  function handletoDoClick() { // affiche l'id de la liste
+  function handletoDoClick() {
+    // affiche l'id de la liste
     toggleTodo(todo.id);
     console.log(todo.id);
   }
@@ -12,6 +13,7 @@ export default function Todo({ todo, toggleTodo }) {
           type="checkbox"
           checked={todo.complete} //props qui active 'complete'
           onChange={handletoDoClick}
+          style={{ marginRight: 5 }}
         />
         {todo.name}
       </label>
