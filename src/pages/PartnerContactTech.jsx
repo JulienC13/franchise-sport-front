@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-const Structure = () => {
+const PartnerContactTech = () => {
   return (
     <div>
       <h1 className="title">Structure de (nom de la salle / adresse)</h1>
@@ -43,10 +43,10 @@ const Structure = () => {
       </div>
       <br />
       <div className="container">
-      <h3>Liste des fonctionnalités disponible : </h3>
+        <h3>Liste des fonctionnalités disponible : </h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Structure;
+export default PartnerContactTech
